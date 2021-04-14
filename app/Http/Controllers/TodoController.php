@@ -14,7 +14,9 @@ class TodoController extends Controller
      */
     public function index()
     {
-        $todos = Todo::all();
+        $user_id = auth()->user()->id;
+        $todos = Todo::where('user_id', $user_id)->get();
+        // dd($todos);
         return view('dashboard', compact('todos'));
     }
 
@@ -36,6 +38,7 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
+        $user = auth()->user()->id;
         $request->validate([
             'title' => 'required',
             'desc' => 'required',
@@ -46,6 +49,7 @@ class TodoController extends Controller
             'title' => $request->title,
             'description' => $request->desc,
             'enddate' => $request->end,
+            'user_id' => $user,
         ]);
 
         return redirect('/dashboard')->with('status', "Todo created");
@@ -68,9 +72,9 @@ class TodoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Todo $todo)
     {
-        //
+        return view("edit", compact('todo'));
     }
 
     /**
@@ -82,7 +86,19 @@ class TodoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'desc' => 'required',
+            'end' => 'required',
+        ]);
+
+        Todo::where('id', $id)
+            ->update([
+                'title' => $request->title,
+                'description' => $request->desc,
+                'enddate' => $request->end,
+            ]);
+        return redirect('/dashboard')->with('status', 'Todo Updated!');
     }
 
     /**
@@ -93,6 +109,34 @@ class TodoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Todo::destroy($id);
+        return redirect('/dashboard')->with('status', 'Task Deleted!');
+    }
+
+    public function changeToDo($id)
+    {
+        Todo::where('id', $id)
+            ->update([
+                'status' => "Todo",
+            ]);
+        return redirect('/dashboard')->with('status', 'Task changed to To-do!');
+    }
+
+    public function changeToOnprog($id)
+    {
+        Todo::where('id', $id)
+            ->update([
+                'status' => "On Progress",
+            ]);
+        return redirect('/dashboard')->with('status', 'Task changed to On Progress!');
+    }
+
+    public function changeToComp($id)
+    {
+        Todo::where('id', $id)
+            ->update([
+                'status' => "Completed",
+            ]);
+        return redirect('/dashboard')->with('status', 'Task changed to Completed!');
     }
 }

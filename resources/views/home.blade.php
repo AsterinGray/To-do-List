@@ -12,8 +12,8 @@
         <h1>Welcome to ToDoList!</h1>
         <p>This an app for you to create your to-do list for your productivity and better management for your task and jobs.</p>
         <div>
-            <button type="button" class="btn btn-primary"><a href="{{ url("/register") }}" class="text-white">Register</a></button>
-            <button type="button" class="btn btn-secondary"><a href="{{ url("/login") }}" class="text-white">Log In</a></button>
+            <a href="{{ url("/register") }}" class="btn btn-primary">Register</a>
+            <a href="{{ url("/login") }}" class="btn btn-secondary">Log In</a>
         </div>
     </section>
 </body>

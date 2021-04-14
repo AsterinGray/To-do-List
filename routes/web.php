@@ -22,6 +22,16 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [TodoController::class, 'index']);
-    Route::get('/dashboard-create', [TodoController::class, 'create']);
+
+    Route::get('/dashboard/create', [TodoController::class, 'create']);
     Route::post('/dashboard', [TodoController::class, 'store']);
+
+    Route::get('/dashboard/{todo}/edit', [TodoController::class, 'edit']);
+    Route::patch('/dashboard/{todo}', [TodoController::class, 'update']);
+
+    Route::patch("/dashboard/{todo}/todo", [TodoController::class, 'changeToDo']);
+    Route::patch("/dashboard/{todo}/onprog", [TodoController::class, 'changeToOnprog']);
+    Route::patch("/dashboard/{todo}/comp", [TodoController::class, 'changeToComp']);
+
+    Route::delete('/dashboard/{todo}', [TodoController::class, 'destroy']);
 });
