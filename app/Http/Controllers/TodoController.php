@@ -16,7 +16,6 @@ class TodoController extends Controller
     {
         $user_id = auth()->user()->id;
         $todos = Todo::where('user_id', $user_id)->get();
-        // dd($todos);
         return view('dashboard', compact('todos'));
     }
 
@@ -120,15 +119,6 @@ class TodoController extends Controller
                 'status' => "Todo",
             ]);
         return redirect('/dashboard')->with('status', 'Task changed to To-do!');
-    }
-
-    public function changeToOnprog($id)
-    {
-        Todo::where('id', $id)
-            ->update([
-                'status' => "On Progress",
-            ]);
-        return redirect('/dashboard')->with('status', 'Task changed to On Progress!');
     }
 
     public function changeToComp($id)

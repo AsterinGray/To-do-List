@@ -1,24 +1,24 @@
-@extends('layouts.app')
+@extends('layouts.create-edit')
 
-@section('content')
-    <div class="container">
-        <form method="POST" action="/dashboard">
-            @csrf
-            <div class="form-group">
-                <label for="title">Title</label>
-                <input name="title" type="text" class="form-control" id="title" placeholder="Insert Title" value="{{ old('title') }}">
+@section('form')
+    <form method="POST" action="/dashboard">
+        @csrf
+        <div class="inputNoteClass">
+            <div class="inputNote">
+                <img src="{{asset('img/note image.png')}}">
+                <input id="note" name="title" type="text" placeholder="input note..." value="{{ old('title') }}">
             </div>
-            <div class="form-group">
-                <label for="description">Description</label>
-                <textarea name="desc" class="form-control @error('desc') is-invalid @enderror"   id="description" rows="2" placeholder="Insert Description" value="{{ old('desc') }}"></textarea>
+            <div class="inputNote">
+                <img src="{{asset('img/dialogue image.png')}}">
+                <textarea id="description" name="desc" placeholder="input description...">{{ old('desc') }}</textarea>
             </div>
-            <div class="form-group">
-                <label for="date">End Date</label>
-                <input name="end" class="form-control" type="date" id="date" value="{{ old('end') }}">
+            <div class="inputNote">
+                <img src="{{asset('img/deadline image.png')}}">
+                <input id="deadline" name="end" type="date" value="{{ old('end') }}">
             </div>
-            <div class="text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </form>
-    </div>
+        </div>
+        <button type="submit" onclick="" id="addButton">
+            A D D
+        </button>
+    </form>
 @endsection
