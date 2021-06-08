@@ -1,3 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="{{asset('css/dashboard.css')}}">
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <div class="navigation-item">
+                <a class="navigation-link" href="/"> HOME </a>
+            </div>
+        </div>
+        <div class="navigation-bar">        
+            <div class="navigation-item">
+                <div id="notification">
+                    <div id="notif-icon">
+                        <img class="bell-icon" src="{{asset('img/notificationBell.png')}}" alt="" width="30px">
+                    </div>
+                    <div id="dropdown">
+                        <div class="drop notif-title">
+                            Notifications
+                        </div>
+                        <div class="drop notif-detail">
+                            <div class="text-message">
+                                <label for=""> Title </label>
+                            </div>
+                            <div class="time-message time-font">
+                                <label for=""> Time </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @guest
+                @if (Route::has('login'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    </li>
+                @endif
+                
+                @if (Route::has('register'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    </li>
+                @endif
+            @else
+                <li class="nav-item dropdown">
+                    <div class="navigation-item">
+                       <label class="username-text" for="username"> {{ Auth::user()->name }} </label>
+                    </div>
+                    
+                    <div class="navigation-item">
+                        <a class="navigation-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();"> LOGOUT </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
+            @endguest
+        </div>
+    </div>
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -5,7 +72,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 

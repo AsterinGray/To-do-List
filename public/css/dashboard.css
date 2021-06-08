@@ -1,0 +1,240 @@
+body {
+    margin: 0%;
+    overflow-x: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+input[type="checkbox"] {
+    transform: scale(3);
+}
+
+.header {
+    background-color: #5faaa8;
+    padding: 1rem 5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navigation-bar {
+    display: flex;
+    align-items: center;
+    width: 25%;
+    justify-content: space-between;
+}
+
+.navigation-item {
+    padding: 0rem 2rem;
+    text-decoration: none;
+    color: white;
+}
+
+.navigation-link {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+#notif-icon {
+    color: black;
+    background-color: #f4ede3;
+    padding: 1rem 1.5rem;
+    margin-left: 20px;
+    border-radius: 1rem;
+}
+
+.drop {
+    color: black;
+    background-color: #f4ede3;
+    padding: 1rem 2rem;
+    margin-left: 20px;
+}
+
+#notif-icon:hover {
+    background-color: #f4ede3;
+    padding: 1rem 1.5rem;
+    margin-left: 20px;
+}
+
+#notification {
+    position: relative;
+}
+
+#dropdown {
+    display: none;
+    position: absolute;
+    left: 0;
+}
+
+#notification:hover #dropdown {
+    display: block;
+}
+
+#notification:hover #morebtn {
+    padding: 10px 29.5px;
+    border-radius: 0px;
+    margin-left: 20px;
+}
+
+.notif-title {
+    padding: 1rem 8rem;
+    background-color: #f4ede3;
+    color: #0e6562;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.notif-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 3px #ebe7e2 solid;
+    padding: 1rem 1rem;
+}
+
+.time-font {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    color: #f05945;
+    background-color: #ffffff;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+}
+
+.username-text {
+    text-decoration: none;
+    color: white;
+    font-style: italic;
+}
+
+.banner {
+    display: flex;
+    justify-content: center;
+    background-image: url("/img/Welcome to do list.png");
+    background-position: center;
+    background-size: cover;
+    padding: 15rem 0rem;
+    color: white;
+}
+
+.title {
+    display: flex;
+    color: #f05945;
+    margin-top: 9rem;
+}
+
+.container {
+    padding: 4rem 10rem;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 0rem;
+}
+
+.container-title {
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: bolder;
+    color: #368e8b;
+}
+
+.list-container {
+    padding: 2rem 2rem;
+}
+
+.single-list {
+    background-color: #ebc076;
+    display: flex;
+    align-items: center;
+    border-radius: 2rem;
+    margin: 2rem 0rem;
+}
+
+.single-done-list {
+    background-color: #a0cfc7;
+    display: flex;
+    align-items: center;
+    border-radius: 2rem;
+    margin: 2rem 0rem;
+}
+
+.single-done-list:hover {
+    background-color: #b6f2e8;
+}
+
+.single-list:hover {
+    background-color: #f4d779;
+}
+
+.checkbox-area {
+    margin: 3rem 3rem;
+}
+
+.to-do-item {
+    padding: 3rem 2rem;
+}
+
+.item-title {
+    font-weight: bolder;
+    font-size: 30px;
+    padding: 1rem 0rem;
+}
+
+.item-description {
+    padding: 0.5rem 0rem;
+    text-align: justify;
+}
+
+.item-date {
+    font-weight: bold;
+    font-size: large;
+    padding: 0.5rem 0rem;
+}
+
+.to-do-navigation {
+    display: flex;
+    align-items: center;
+    width: 10%;
+    justify-content: space-around;
+    padding: 0rem 2rem;
+    margin-left: auto;
+}
+
+.control-item {
+    padding: 1rem 1rem;
+}
+
+.control-item:hover {
+    background-color: white;
+    padding: 1rem 1rem;
+    border-radius: 1rem;
+}
+
+.sort-up img {
+    rotate: 180deg;
+}
+
+.footer {
+    background-color: #5faaa8;
+    padding: 1rem 5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sorting {
+    display: flex;
+}
+
+.sorting button {
+    cursor: pointer;
+}

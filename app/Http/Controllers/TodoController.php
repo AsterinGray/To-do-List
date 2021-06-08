@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Todo;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class TodoController extends Controller
 {
@@ -12,11 +13,26 @@ class TodoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $sort = $request->query('sort');
         $user_id = auth()->user()->id;
-        $todos = Todo::where('user_id', $user_id)->get();
-        return view('dashboard', compact('todos'));
+        $date = Carbon::now();
+        $target_date = Carbon::now()->addDay(7);
+
+        if(!$sort){
+            $todos = Todo::where('user_id', $user_id)->get();
+            $notifs = Todo::where('user_id', $user_id)->whereDate('enddate', '<', $target_date)->get();
+            return view('dashboard', compact('todos','notifs')); 
+        }else if ($sort == 'asc'){
+            $todos = Todo::where('user_id', $user_id)->orderBy('enddate', 'asc')->get();
+            $notifs = Todo::where('user_id', $user_id)->whereDate('enddate', '<', $target_date)->get();
+            return view('dashboard', compact('todos','notifs'));
+        }else if($sort == 'desc'){
+            $todos = Todo::where('user_id', $user_id)->orderBy('enddate', 'desc')->get();
+            $notifs = Todo::where('user_id', $user_id)->whereDate('enddate', '<', $target_date)->get();
+            return view('dashboard', compact('todos','notifs'));
+        }
     }
 
     /**
