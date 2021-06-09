@@ -1,4 +1,4 @@
-#How To Run Laravel Project
+# How To Run Laravel Project
 
 1. Clone this repository to your local
 2. Find `.env.example` file int the root folder and then copy the entire contents of the file
