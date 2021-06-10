@@ -11,8 +11,8 @@
 <body>
     <div class="header">
         <div class="logo">
-            <div class="navigation-item">
-                <a class="navigation-link" href="/"> HOME </a>
+            <div class="navigation-item navigation-link" style="font-size: 2rem">
+                To-do List
             </div>
         </div>
         <div class="navigation-bar">        
